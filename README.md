@@ -7,5 +7,16 @@
 
 
 # Calling api on your command line
-There is no need to add a header to your curl command
-- `curl "localhost:3000/projects"`
+### GET requests
+1. GET all projects
+    - `curl "localhost:3000/projects"`
+2. GET project by Id
+    - `curl "localhost:3000/projects/{id}`
+
+### POST request
+1. POST new project
+    - `curl -X POST -H "Content-Type: application/json" --data '{...}' "localhost:3000/projects"
+
+### DELETE request
+1. DELETE project by Id
+    - `curl -X DELETE -H "localhost:3000/projects/{id}"
