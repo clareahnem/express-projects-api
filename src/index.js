@@ -1,7 +1,8 @@
 const express = require('express')
 const projectsRouter = require('./routes/projects')
+const { PORT } = require('../config')
 
-const port = process.env.PORT || 3000
+const port = PORT || 3000
 const app = express()
 
 //musr add express.json() so that we can accept json request bodies
