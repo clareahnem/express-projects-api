@@ -1,6 +1,5 @@
 const express = require('express')
 const { Validator } = require('express-json-validator-middleware')
-const { projects } = require('../data/db')
 const { projectSchema } = require('../schemas/projectSchema')
 const connection = require('../data/index')
 
@@ -42,6 +41,25 @@ router.post(
                 res.send(`successfully added new project to database!, ${JSON.stringify(newProject)}}`)
             }
         })
+})
+
+router.put(
+    '/edit/:id',
+    validate({ body: projectSchema }),
+    (req, res) => {
+    const id = req.params.id
+    const editProject = {
+        title: req.body.title,
+        link: req.body.link,
+        repository: req.body.repository,
+        tech: req.body.tech.join(',')
+    }
+    connection.query(`UPDATE project SET ? WHERE id=${id}`, editProject, (err, result) => {
+        if(err) throw err
+        else {
+            res.send(`successfully updated user with id ${id}: ${JSON.stringify(editProject)}`)
+        }
+    })
 })
 
 router.delete('/:id', (req, res) => {
