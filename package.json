@@ -12,7 +12,8 @@
   "license": "ISC",
   "dependencies": {
     "express": "^4.19.2",
-    "express-json-validator-middleware": "^3.0.1"
+    "express-json-validator-middleware": "^3.0.1",
+    "mysql": "^2.18.1"
   },
   "devDependencies": {
     "nodemon": "^3.1.0"

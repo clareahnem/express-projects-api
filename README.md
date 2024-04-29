@@ -15,8 +15,12 @@
 
 ### POST request
 1. POST new project
-    - `curl -X POST -H "Content-Type: application/json" --data '{...}' "localhost:3000/projects"
+    - `curl -X POST -H "Content-Type: application/json" --data '{"title": ...}' "localhost:3000/projects"`
 
 ### DELETE request
 1. DELETE project by Id
-    - `curl -X DELETE -H "localhost:3000/projects/{id}"
+    - `curl -X DELETE -H "localhost:3000/projects/{id}"`
+
+### PUT request
+1. EDIT existing project by Id
+    - `curl -X -H "Content-Type: application/json" --data '{"title": ...}' "localhost:3000/projects/edit/{id}"`
