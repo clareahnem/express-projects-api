@@ -8,12 +8,26 @@ const router = express.Router()
 const { validate } = new Validator()
 
 
+
 router.get('/', (req, res) => {
-    // no need to add response code in express bc it will do so automatically
-    connection.query('SELECT * FROM project', (err, result) => {
+    const queryParams = req.query
+    if(Object.keys(queryParams).length > 0) {
+        const title = queryParams.title
+        const tech = queryParams.tech?.split(',').join('%')
+        connection.query(
+            'SELECT * FROM project WHERE title LIKE ? OR tech LIKE ?',
+            [  `%${title}%`, `%${tech}%`]
+        , (err, result) => {
+            if(!!err) throw err
+            res.json(result)
+        })
+    }
+    else {
+        connection.query('SELECT * FROM project', (err, result) => {
         if (err) throw err
         res.json(result)
-    })
+        })
+    }
 })
 
 router.get('/:id', (req, res) => {
@@ -24,6 +38,7 @@ router.get('/:id', (req, res) => {
         res.json(result)
     })
 })
+
 
 router.post(
     '/',

@@ -12,6 +12,9 @@
     - `curl "localhost:3000/projects"`
 2. GET project by Id
     - `curl "localhost:3000/projects/{id}`
+3. Search Projects by title and/or tech stack
+    - `curl "localhost:3000/projects?title='{title}'&tech='{tech}'`
+    - [NOTE] Tech query can take multiple tech stack separated by comma e.g. `tech='HTML,JavaScript'`
 
 ### POST request
 1. POST new project
@@ -22,5 +25,12 @@
     - `curl -X DELETE -H "localhost:3000/projects/{id}"`
 
 ### PUT request
-1. EDIT existing project by Id
+1. UPDATE existing project by Id
     - `curl -X -H "Content-Type: application/json" --data '{"title": ...}' "localhost:3000/projects/edit/{id}"`
+
+
+---
+# Future Considerations
+## 1. Add images for each project
+- want to connect to a database, maybe google cloud storage
+
