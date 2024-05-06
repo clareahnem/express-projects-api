@@ -33,4 +33,25 @@
 # Future Considerations
 ## 1. Add images for each project
 - want to connect to a database, maybe google cloud storage
+## 2. Migrate from local mySQL to one available online
+- so that data can be accessed from any computer
+## 3. 
+
+---
+# Writing tests
+1. Install jest and supertest `npm i --save-dev jest supertest`
+2. add jest configurations to package.json
+    ```json
+        "scripts": {
+            "test": "jest"
+        },
+        "jest": {
+            "testEnvironment": "node",
+            "coveragePathIgnorePatterns": [
+                "/node_modules/"
+            ]
+        }
+    ```
+
+
 

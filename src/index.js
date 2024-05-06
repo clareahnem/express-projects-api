@@ -10,6 +10,8 @@ app.use(express.json())
 app.use('/projects', projectsRouter)
 
 // we must add a listener so that the response is being listened when we run the server
-app.listen(port, () => {
+const server = app.listen(port, () => {
     console.log(`projects api now listening on port ${port}`)
 })
+
+exports.server = server;
