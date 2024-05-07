@@ -30,12 +30,13 @@
 
 
 ---
-# Future Considerations
+# Future Considerations ( in no particular order)
 ## 1. Add images for each project
 - want to connect to a database, maybe google cloud storage
 ## 2. Migrate from local mySQL to one available online
 - so that data can be accessed from any computer
-## 3. 
+## 3. Error handling
+- implement better error handling and write tests for it
 
 ---
 # Writing tests
@@ -52,6 +53,7 @@
             ]
         }
     ```
+3. create a separate mySQL table for tests
 
 
 
