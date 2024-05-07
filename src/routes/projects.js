@@ -2,6 +2,7 @@ const express = require('express')
 const { Validator } = require('express-json-validator-middleware')
 const { projectSchema } = require('../schemas/projectSchema')
 const connection = require('../data/index')
+const { formatProjectsResponse, formatProjectWithId } = require('../utils/transformData')
 
 // use a router instead of express() so that we are using the same instance from index.js
 const router = express.Router()
@@ -19,13 +20,19 @@ router.get('/', (req, res) => {
             [  `%${title}%`, `%${tech}%`]
         , (err, result) => {
             if(!!err) throw err
-            res.json(result)
+            else {
+                const projects = formatProjectsResponse(result)
+                res.json(projects)
+            }
         })
     }
     else {
         connection.query('SELECT * FROM project', (err, result) => {
         if (err) throw err
-        res.json(result)
+        else {
+            const projects = formatProjectsResponse(result)
+            res.json(projects)
+        }
         })
     }
 })
@@ -35,7 +42,10 @@ router.get('/:id', (req, res) => {
     const queryId = req.params.id
     connection.query(`SELECT * FROM PROJECT WHERE id=${queryId}`, (err, result) => {
         if(err) throw err
-        res.json(result)
+        else {
+            const project = formatProjectsResponse(result)
+            res.json(project)
+        }
     })
 })
 
@@ -53,7 +63,8 @@ router.post(
         connection.query(`INSERT INTO project SET ?`, newProject, (err, result) => {
             if(err) throw err
             else {
-                res.send(`successfully added new project to database!, ${JSON.stringify(newProject)}}`)
+                const newProjectDetails = formatProjectWithId(newProject, result.insertId)
+                res.json(newProjectDetails)
             }
         })
 })
@@ -72,7 +83,8 @@ router.put(
     connection.query(`UPDATE project SET ? WHERE id=${id}`, editProject, (err, result) => {
         if(err) throw err
         else {
-            res.send(`successfully updated user with id ${id}: ${JSON.stringify(editProject)}`)
+            const updatedProject = formatProjectWithId(editProject, result.insertId)
+            res.json(updatedProject)
         }
     })
 })
