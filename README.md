@@ -31,11 +31,11 @@
 
 ---
 # Future Considerations ( in no particular order)
-## 1. Add images for each project
+### 1. Add images for each project
 - want to connect to a database, maybe google cloud storage
-## 2. Migrate from local mySQL to one available online
+### 2. Migrate from local mySQL to one available online
 - so that data can be accessed from any computer
-## 3. Error handling
+### 3. Error handling
 - implement better error handling and write tests for it
 
 ---
@@ -53,7 +53,8 @@
             ]
         }
     ```
-3. create a separate mySQL table for tests
+3. create a separate mySQL database for tests
+    - updated the test script so that it will read from the test db's project table instead of the regular one
 
 
 
