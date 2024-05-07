@@ -1,4 +1,10 @@
-# How to create an express project
+# Projects API
+This is an API created for my personal use which can be used to store, retrieve and update the list of my coding projects.
+It uses express.js and a local MySQL database.
+
+---
+
+## How to create an express project
 - create a node package manager with command `npm init` on a new folder
     - you should see a series of prompts to add your project name, git repository...etc
 - install express onto your project `npm i express`
@@ -6,7 +12,7 @@
 - add start and dev scripts to your package.json
 
 
-# Calling api on your command line
+## Calling api on your command line
 ### GET requests
 1. GET all projects
     - `curl "localhost:3000/projects"`
@@ -30,7 +36,7 @@
 
 
 ---
-# Future Considerations ( in no particular order)
+## Future Considerations (in no particular order)
 ### 1. Add images for each project
 - want to connect to a database, maybe google cloud storage
 ### 2. Migrate from local mySQL to one available online
@@ -39,7 +45,7 @@
 - implement better error handling and write tests for it
 
 ---
-# Writing tests
+## Writing tests
 1. Install jest and supertest `npm i --save-dev jest supertest`
 2. add jest configurations to package.json
     ```json
